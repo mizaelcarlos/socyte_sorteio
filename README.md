@@ -1,1 +1,1 @@
-# socyte_sorteio
+<h1> Aplicação para sorteio de times de partidas em campo Socyte.<h1>
