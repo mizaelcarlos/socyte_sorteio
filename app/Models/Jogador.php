@@ -32,4 +32,5 @@ class Jogador extends Model
     {
        return $this->belongsToMany(Partida::class);
     }
+
 }

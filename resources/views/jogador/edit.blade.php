@@ -1,25 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+</br>        
         <div class="row">
-             
-
             <div class="col-md-12">
-                <div class="card">
-                    <h2>Alterar jogador </h2>
+            <div class="card">
+                <div class="card-header">Alterar Jogador </div>
                     <div class="card-body">
-                        <br />
-                        <br />
-
-                        @if ($errors->any())
-                            <ul class="alert alert-danger">
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        @endif
-
                         <form action="{{ route('jogador.update',$jogador->id) }}" method="POST">
                             @csrf
                             @method('PUT')
@@ -65,5 +52,4 @@
                 </div>
             </div>
         </div>
-    </div>
 @endsection

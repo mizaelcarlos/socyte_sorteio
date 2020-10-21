@@ -12,7 +12,7 @@
 </div>
 
 @if(session()->has('status'))
-   <div class="alert alert-primary" role="alert">   
+   <div class="alert alert-danger" role="alert">   
         <p>{{session()->get('status')}}</p>
     </div>
 @endif

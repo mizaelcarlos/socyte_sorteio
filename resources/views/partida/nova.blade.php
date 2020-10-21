@@ -1,19 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+</br>
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <h2>Sorteio partida</h2>
-                    <div class="card-body">
+                    <div class="card-header">Cadastrar partida </div>
+                        <div class="card-body">
 
 
                         <form action="{{ route('partida.cadastrar') }}" method="POST">  
                           @csrf
-                          <div class="card-body bg-white">
+                          <div class="container">
 
-                                <div class="row flex-auto">
+                                
                                 <div class="form-group">
                                     <label for="data" class="control-label">{{ 'Data' }}</label>
                                     <input class="form-control" name="data" type="date" id="data" >
@@ -30,7 +30,6 @@
                                     </button>
                                     </div>
     
-                                </div>
                             </div>
 
                         </form>
@@ -39,5 +38,4 @@
                 </div>
             </div>
         </div>
-    </div>
 @endsection

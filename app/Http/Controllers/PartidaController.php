@@ -53,35 +53,98 @@ class PartidaController extends Controller
 
         $quantidade_jogadores_time = intval($request->quantidade_jogadores_time);
         $jogadores_selecionados = $request->selecionados;
-        $quantidade_jogadores_confirmados = count($jogadores_selecionados);
-        $jogadores_sobrando = $quantidade_jogadores_confirmados % $quantidade_jogadores_time;
-        $quantidade_times = ($quantidade_jogadores_confirmados - $jogadores_sobrando) / $quantidade_jogadores_time;
-        $jogadores_escolhidos = array();
+        if(!empty($jogadores_selecionados)){
+
+            $quantidade_jogadores_confirmados = count($jogadores_selecionados);
+            $jogadores_sobrando = $quantidade_jogadores_confirmados % $quantidade_jogadores_time;
+            $quantidade_times = ($quantidade_jogadores_confirmados - $jogadores_sobrando) / $quantidade_jogadores_time;
+            $jogadores_escolhidos = array();
+            $quantidade_minima_jogadores = $quantidade_jogadores_time * 2;
+            $time_possui_goleiro = false;
         
+        
+
+       
+
         if($jogadores_sobrando > 0){
 
             $quantidade_times = $quantidade_times + 1;
         }
 
-        $time = array();
+        $times = array();
         
-       
-        for($i = 0; $i <= $quantidade_jogadores_confirmados ; $i++){
-        
-            $jogador_escolhido = array_rand($jogadores_selecionados);
-            if(in_array($jogador_escolhido,$jogadores_escolhidos)){
-                
-                continue;
+    
+        if($quantidade_jogadores_confirmados >= $quantidade_minima_jogadores ){
 
-            }
-            $time[] = $jogador_escolhido;
-            $jogadores_escolhidos[] = $jogador_escolhido;
+        
+            for($i = 0; $i < $quantidade_times ; $i++){
+
+                for($j = 0; $j < $quantidade_jogadores_time ; $j++){
+                    
+                    if(!empty($jogadores_selecionados)){
+
+		
+                        $jogador_escolhido = array_rand($jogadores_selecionados);
+                        $jogador = Jogador::find($jogadores_selecionados[$jogador_escolhido]);
+                        $goleiro = $jogador->goleiro;
+                        
+                        if($time_possui_goleiro == false){
+                            
+                            if($goleiro == 1){
+                            $times[$i][$j] = $jogador;
+                            unset($jogadores_selecionados[$jogador_escolhido]);
+                            $time_possui_goleiro = true;
+                            }
+                            else{
+                            
+                                $times[$i][$j] = $jogador;
+                                unset($jogadores_selecionados[$jogador_escolhido]);
+                            }
+                        }
+                        else{
+                
+                            if($goleiro == 0){
+                            $times[$i][$j] = $jogador;
+                            unset($jogadores_selecionados[$jogador_escolhido]);
+                            }
+                            else{
+                            
+                             $jogador_escolhido = array_rand($jogadores_selecionados);
+                             $jogador = Jogador::find($jogadores_selecionados[$jogador_escolhido]);
+                             $times[$i][$j] = $jogador;
+                             unset($jogadores_selecionados[$jogador_escolhido]);
+                             
+                            }
+                        }       
+                        
+                    }
+                
+                }
+
+                $time_possui_goleiro = false;
+             }
+
+        }
+        else{
             
-           
+            return redirect()->route('partida.index')
+                        ->with('status','Não é possível formar no mínimo 2 times.');
         }
 
-        var_dump(print_r($time));
-        
+        $cont = 0;
+        return view('partida.processar_sorteio',[
+            'quantidade_times' => $quantidade_times,
+            'times' => $times,
+            'cont' => $cont
 
+        ]);
+    }
+    else{
+
+        return redirect()->route('partida.index')
+                        ->with('status','Selecione os jogadores para o sorteio.');
+
+    }
+        
     }
 }
