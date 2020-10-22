@@ -23,7 +23,7 @@
                                             <div class="form-group">
                                                 </br>
                                                 <button type="submit" class="btn btn-primary mb-3">
-                                                    Salvar 
+                                                    Sortear 
                                                 </button>
                                             </div>
             

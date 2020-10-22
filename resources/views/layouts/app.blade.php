@@ -54,6 +54,7 @@
     <script src="{{ asset('/componentes/js/util.js') }}"></script>
     <script src="{{ asset('/componentes/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('/componentes/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('/componentes/js/jquery/jquery.inputmask.js') }}"></script>
 
     <link href="{{ asset('/componentes/css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('/componentes/css/bootstrap.min.css') }}" rel="stylesheet">

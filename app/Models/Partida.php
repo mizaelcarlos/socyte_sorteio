@@ -11,6 +11,11 @@ class Partida extends Model
 	
 	protected $table = 'partida';
 
+	protected $dates = [
+		'data'
+	];
+
+
 	public function jogadores()
 	{
 		return $this->belongsToMany(Jogador::class);
