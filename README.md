@@ -1,4 +1,4 @@
-<h1> Aplicação para sorteio de times em partidas em campo Socyte.</h1>
+<h1> Aplicação para sorteio de times de futebol</h1>
     
 
 <p> Um grupo de amigos, desenvolvedores, resolveram jogar futebol toda semana em um campo Society de
