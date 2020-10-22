@@ -24,10 +24,10 @@
                 <a class="navbar-brand" href="{{ route('partida.index')}}">Sorteio Socyte</a>
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ route('partida.index')}}">Gerenciamento de Partidas</a>
+                <a class="nav-link" href="{{ route('jogador.index')}}">Gerenciamento de Jogadores</a>
                 </li>
                 <li class="nav-item active">
-                <a class="nav-link" href="{{ route('jogador.index')}}">Gerenciamento de Jogadores</a>
+                    <a class="nav-link" href="{{ route('partida.index')}}">Gerenciamento de Partidas</a>
                 </li>
                 </ul>
             </div>
